@@ -1,0 +1,33 @@
+{
+  "name": "consoloid-devbox",
+  "description": "Developer sandbox for consoloid",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "glob": "*",
+    "js-yaml": "*",
+    "consoloid-framework": "git://github.com/agmen-hu/consoloid-framework",
+    "consoloid-console": "git://github.com/agmen-hu/consoloid-console",
+    "consoloid-server": "git://github.com/agmen-hu/consoloid-server",
+    "consoloid-os": "git://github.com/agmen-hu/consoloid-os"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Szilard Novaki",
+    "email": "novaki@agmen.hu",
+    "url": "https://agmen.hu"
+  },
+  "contributors": [
+    {
+      "name": "Szilard Novaki",
+      "email": "novaki@agmen.hu"
+    }
+  ],
+  "engines": {
+    "node": ">=0.8",
+    "npm": ">=1.2.0"
+  },
+  "scripts": {
+    "test": "./test -g src"
+  }
+}

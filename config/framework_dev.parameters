@@ -1,0 +1,8 @@
+include: ../node_modules/consoloid-framework/framework.parameters
+log:
+  client:
+    levelName: debug
+    streamServices:
+      - log_stream_console
+      - log_stream_buffer
+    bufferSendInterval: 500
