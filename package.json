@@ -1,26 +1,30 @@
 {
-  "name": "consoloid-devbox",
-  "description": "Developer sandbox for consoloid",
+  "name": "consoloid-consodroid",
+  "description": "Consoloid part of ConsoDroid",
   "version": "0.0.1",
   "private": true,
   "dependencies": {
     "glob": "*",
     "js-yaml": "*",
     "consoloid-framework": "git://github.com/agmen-hu/consoloid-framework",
-    "consoloid-console": "git://github.com/agmen-hu/consoloid-console",
+    "consoloid-console": "git://github.com/agmen-hu/consoloid-console#consodroid_related_patches",
     "consoloid-server": "git://github.com/agmen-hu/consoloid-server",
-    "consoloid-os": "git://github.com/agmen-hu/consoloid-os"
+    "consoloid-os": "git://github.com/agmen-hu/consoloid-os",
+    "consoloid-os": "git://github.com/hendricha/consoloid-filelist#consodroid_related_patches"
   },
   "license": "MIT",
   "author": {
-    "name": "Szilard Novaki",
-    "email": "novaki@agmen.hu",
-    "url": "https://agmen.hu"
+    "name": "Hendrich Attila",
+    "email": "hendricha@agmen.hu",
   },
   "contributors": [
     {
       "name": "Szilard Novaki",
       "email": "novaki@agmen.hu"
+    },
+    {
+      "name": "Hendrich Attila",
+      "email": "hendricha@agmen.hu",
     }
   ],
   "engines": {
