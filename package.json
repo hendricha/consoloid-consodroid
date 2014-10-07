@@ -6,10 +6,10 @@
   "dependencies": {
     "glob": "*",
     "js-yaml": "*",
-    "consoloid-framework": "git://github.com/agmen-hu/consoloid-framework",
+    "consoloid-framework": "*",
     "consoloid-console": "git://github.com/agmen-hu/consoloid-console#consodroid_related_patches",
-    "consoloid-server": "git://github.com/agmen-hu/consoloid-server",
-    "consoloid-os": "git://github.com/agmen-hu/consoloid-os",
+    "consoloid-server": "*",
+    "consoloid-os": "*",
     "consoloid-filelist": "git://github.com/hendricha/consoloid-filelist"
   },
   "license": "MIT",
