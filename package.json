@@ -10,7 +10,9 @@
     "consoloid-console": "git://github.com/agmen-hu/consoloid-console#consodroid_related_patches",
     "consoloid-server": "*",
     "consoloid-os": "*",
-    "consoloid-filelist": "git://github.com/hendricha/consoloid-filelist"
+    "consoloid-filelist": "git://github.com/hendricha/consoloid-filelist",
+    "fs-ext": "*",
+    "contextify": "*"
   },
   "license": "MIT",
   "author": {
