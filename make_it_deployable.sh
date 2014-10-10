@@ -3,3 +3,4 @@ rm -rf .git
 rm -rf node_modules/consoloid-framework/node_modules/mocha
 rm -rf node_modules/consoloid-framework/node_modules/should
 rm -rf node_modules/consoloid-framework/node_modules/sinon
+find node_modules -name ".bin" -exec rm -rf {} \;
