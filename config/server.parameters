@@ -1,6 +1,11 @@
 include: ../node_modules/consoloid-server/server.parameters
 server:
   cookie: sandbox
+  logFormat: ~
 router:
   defaultTopics:
     - console
+log:
+  minilog:
+    filePath: '/data/data/hu.hendricha.consodroid/files/consodroid.log'
+    consoleEnabled: false

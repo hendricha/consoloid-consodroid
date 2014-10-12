@@ -1,5 +1,9 @@
 include: server.parameters
+server:
+  logFormat: 'color'
 log:
   server:
     levelName: debug
     bufferSendInterval: 1000
+  minilog:
+    filePath: ''
