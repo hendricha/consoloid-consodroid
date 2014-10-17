@@ -1,3 +1,6 @@
+include: filelist.parameters
 file:
   list:
     defaultFolder: "/sdcard/ConsoDroidPublic"
+  accessAuthorizer:
+    accessControlFolder: "/data/data/hu.hendricha.consodroid/files/accessControl"

@@ -1,0 +1,5 @@
+include: ../node_modules/consoloid-filelist/filelist.parameters
+file:
+  accessAuthorizer:
+    cls: "ConsoDroid.AccessAuthorizer"
+    accessControlFolder: "/tmp"
