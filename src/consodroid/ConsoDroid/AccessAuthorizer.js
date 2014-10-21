@@ -17,7 +17,7 @@ defineClass('ConsoDroid.AccessAuthorizer', 'Consoloid.FileList.Server.MockAccess
         return;
       }
 
-      throw new Error("Unauthorized file access");
+      throw new Error(__("Unauthorized file access"));
     },
 
     __sessionIsAuthorized: function(socket)
@@ -28,7 +28,7 @@ defineClass('ConsoDroid.AccessAuthorizer', 'Consoloid.FileList.Server.MockAccess
         this.fsModule.writeFileSync(accessControlFile, "");
       }
 
-      if (this.fsModule.readFileSync(accessControlFile) == "true") {
+      if (this.fsModule.readFileSync(accessControlFile).toString().indexOf("true") == 0) {
         return true;
       }
 

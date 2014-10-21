@@ -13,7 +13,7 @@ describeUnitTest('ConsoDroid.AccessAuthorizer', function() {
   beforeEach(function() {
     fs = {
       writeFileSync: sinon.stub(),
-      readFileSync: sinon.stub(),
+      readFileSync: sinon.stub().returns(new Buffer("")),
       existsSync: sinon.stub().returns(true),
     };
 
@@ -65,7 +65,7 @@ describeUnitTest('ConsoDroid.AccessAuthorizer', function() {
     });
 
     it("should allow reading and writing to any folder if access control file has the right content", function() {
-      fs.readFileSync.returns("true");
+      fs.readFileSync.returns(new Buffer("true"));
       (function() {
         authorizer.authorize(ConsoDroid.AccessAuthorizer.OPERATION_READ, "/some/other/path", socket);
       }).should.not.throwError();
