@@ -82,5 +82,16 @@ describeUnitTest('ConsoDroid.AccessAuthorizer', function() {
         authorizer.authorize(ConsoDroid.AccessAuthorizer.OPERATION_WRITE, "/the/public/path/some.file", socket);
       }).should.not.throwError();
     });
+
+    it("should be able to work with alternative socket type", function() {
+      socket = {
+        _peername: {
+          address: "IP.ADD.RE.SS"
+        }
+      };
+      (function() {
+        authorizer.authorize(ConsoDroid.AccessAuthorizer.OPERATION_READ, "/the/public/path/some.file", socket);
+      }).should.not.throwError();
+    });
   });
 });
