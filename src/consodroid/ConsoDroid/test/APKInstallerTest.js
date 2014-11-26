@@ -44,7 +44,7 @@ describeUnitTest('ConsoDroid.APKInstaller', function() {
 
       fs.writeFileSync.calledOnce.should.be.ok;
       fs.writeFileSync.args[0][0].length.should.be.ok;
-      fs.writeFileSync.args[0][1].should.equal("/the/path/of/some.apk");
+      fs.writeFileSync.args[0][1].should.equal("/the/path/of/some.apk\n");
 
       installer.sendResult.calledWith(res, { result: true }).should.be.ok;
     });
@@ -63,9 +63,9 @@ describeUnitTest('ConsoDroid.APKInstaller', function() {
 
       fs.writeFileSync.calledTwice.should.be.ok;
       fs.writeFileSync.args[0][0].length.should.be.ok;
-      fs.writeFileSync.args[0][1].should.equal("/the/path/of/some.apk");
+      fs.writeFileSync.args[0][1].should.equal("/the/path/of/some.apk\n");
       fs.writeFileSync.args[1][0].length.should.be.ok;
-      fs.writeFileSync.args[1][1].should.equal("/the/path/of/some.apk");
+      fs.writeFileSync.args[1][1].should.equal("/the/path/of/some.apk\n");
 
       fs.writeFileSync.args[0][0].should.not.equal(fs.writeFileSync.args[0][1]);
     });

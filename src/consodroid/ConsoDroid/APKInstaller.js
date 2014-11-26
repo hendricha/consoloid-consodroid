@@ -20,7 +20,7 @@ defineClass('ConsoDroid.APKInstaller', 'Consoloid.FileList.Server.AuthorizingSer
       var requestsFolderPath = this.get('resource_loader').getParameter('consoDroid.apkInstaller.requestsFolder');
       var current_date = (new Date()).valueOf().toString();
       var hash = this.cryptoModule.createHash('sha1').update(current_date + apk).digest('hex');
-      this.fsModule.writeFileSync(requestsFolderPath + "/" + hash, apk);
+      this.fsModule.writeFileSync(requestsFolderPath + "/" + hash, apk + "\n");
 
       this._respond(null, { result: true });
     }
