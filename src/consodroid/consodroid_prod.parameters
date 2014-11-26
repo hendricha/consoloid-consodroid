@@ -1,0 +1,4 @@
+include: consodroid.parameters
+consoDroid:
+  apkInstaller:
+    requestsFolder: "/data/data/hu.hendricha.consodroid/files/apkInstallRequests"

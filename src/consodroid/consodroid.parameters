@@ -1,0 +1,3 @@
+consoDroid:
+  apkInstaller:
+    requestsFolder: "/tmp"
