@@ -17,6 +17,11 @@ definitions:
   install.apk.dialog:
     cls: ConsoDroid.InstallAPKDialog
     shared: false
+    options:
+      states:
+        'active': 'Consoloid-FileList-Dialog-DialogActive'
+        'error': 'Consoloid-FileList-Dialog-DialogError'
+        success: 'ConsoDroid-InstallAPKDialog'
 
   install.apk.registration:
     tags: [ "file-opener-registration" ]
