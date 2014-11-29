@@ -7,17 +7,28 @@ defineClass('ConsoDroid.AccessAuthorizer', 'Consoloid.FileList.Server.MockAccess
       }, options));
     },
 
-    authorize: function(operation, path, socket)
+    authorize: function(operation, object, socket)
     {
       if (this.__sessionIsAuthorized(socket)) {
         return;
       }
 
-      if ((operation == this.__self.OPERATION_FILE_READ) && this.__pathIsPublic(path)) {
+      if ((operation == this.__self.OPERATION_FILE_READ) && this.__pathIsPublic(object)) {
         return;
       }
 
-      throw new Error(__("Unauthorized file access"));
+      switch(operation) {
+        case this.__self.OPERATION_FILE_READ:
+        case this.__self.OPERATION_FILE_WRITE:
+          throw new Error(__("Unauthorized file access"));
+
+        case this.__self.OPERATION_LIST_ANDROID_APPLICATIONS:
+        case this.__self.OPERATION_UNINSTALL_ANDROID_APPLICATIONS:
+          throw new Error(__("Listing and uninstalling Android applications is unauthorized"));
+
+        default:
+          throw new Error(__("Unknown operation requested authorization"));
+      }
     },
 
     __sessionIsAuthorized: function(socket)
@@ -42,5 +53,9 @@ defineClass('ConsoDroid.AccessAuthorizer', 'Consoloid.FileList.Server.MockAccess
       var publicPath = this.get('resource_loader').getParameter('file.list.defaultFolder');
       return path.indexOf(publicPath) == 0;
     }
+  },
+  {
+    OPERATION_LIST_ANDROID_APPLICATIONS: 2,
+    OPERATION_UNINSTALL_ANDROID_APPLICATIONS: 3
   }
 );

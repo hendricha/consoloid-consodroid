@@ -44,43 +44,74 @@ describeUnitTest('ConsoDroid.AccessAuthorizer', function() {
       fs.writeFileSync.calledWith("/accessControlPath/IP.ADD.RE.SS", "").should.be.ok;
     });
 
-    it("should allow only reading from the public folder when user is not authorized", function() {
-      (function() {
-        authorizer.authorize(ConsoDroid.AccessAuthorizer.OPERATION_FILE_READ, "/the/public/path/some.file", socket);
-      }).should.not.throwError();
+    describe("file access", function() {
+      it("should allow only reading from the public folder when user is not authorized", function() {
+        (function() {
+          authorizer.authorize(ConsoDroid.AccessAuthorizer.OPERATION_FILE_READ, "/the/public/path/some.file", socket);
+        }).should.not.throwError();
 
-      (function() {
-        authorizer.authorize(ConsoDroid.AccessAuthorizer.OPERATION_FILE_WRITE, "/the/public/path/some.file", socket);
-      }).should.throwError();
+        (function() {
+          authorizer.authorize(ConsoDroid.AccessAuthorizer.OPERATION_FILE_WRITE, "/the/public/path/some.file", socket);
+        }).should.throwError();
+      });
+
+      it("should not allow reading and wrting from non pulbic folder when user is not authorized", function() {
+        (function() {
+          authorizer.authorize(ConsoDroid.AccessAuthorizer.OPERATION_FILE_READ, "/some/other/path", socket);
+        }).should.throwError();
+
+        (function() {
+          authorizer.authorize(ConsoDroid.AccessAuthorizer.OPERATION_FILE_WRITE, "/some/other/path", socket);
+        }).should.throwError();
+      });
+
+      it("should allow reading and writing to any folder if access control file has the right content", function() {
+        fs.readFileSync.returns(new Buffer("true"));
+        (function() {
+          authorizer.authorize(ConsoDroid.AccessAuthorizer.OPERATION_FILE_READ, "/some/other/path", socket);
+        }).should.not.throwError();
+
+        (function() {
+          authorizer.authorize(ConsoDroid.AccessAuthorizer.OPERATION_FILE_WRITE, "/some/other/path", socket);
+        }).should.not.throwError();
+
+        (function() {
+          authorizer.authorize(ConsoDroid.AccessAuthorizer.OPERATION_FILE_READ, "/the/public/path/some.file", socket);
+        }).should.not.throwError();
+
+        (function() {
+          authorizer.authorize(ConsoDroid.AccessAuthorizer.OPERATION_FILE_WRITE, "/the/public/path/some.file", socket);
+        }).should.not.throwError();
+      });
     });
 
-    it("should not allow reading and wrting from non pulbic folder when user is not authorized", function() {
-      (function() {
-        authorizer.authorize(ConsoDroid.AccessAuthorizer.OPERATION_FILE_READ, "/some/other/path", socket);
-      }).should.throwError();
+    describe("android applications", function() {
+      it("should not allow listing and uninstalling android applications when user is not authorized", function() {
+        (function() {
+          authorizer.authorize(ConsoDroid.AccessAuthorizer.OPERATION_LIST_ANDROID_APPLICATIONS, null, socket);
+        }).should.throwError();
 
-      (function() {
-        authorizer.authorize(ConsoDroid.AccessAuthorizer.OPERATION_FILE_WRITE, "/some/other/path", socket);
-      }).should.throwError();
+        (function() {
+          authorizer.authorize(ConsoDroid.AccessAuthorizer.OPERATION_UNINSTALL_ANDROID_APPLICATIONS, "hu.hendricha.consodroid", socket);
+        }).should.throwError();
+      });
+
+      it("should allow listing and uninstalling android applications when user is authorized", function() {
+        fs.readFileSync.returns(new Buffer("true"));
+        (function() {
+          authorizer.authorize(ConsoDroid.AccessAuthorizer.OPERATION_LIST_ANDROID_APPLICATIONS, null, socket);
+        }).should.not.throwError();
+
+        (function() {
+          authorizer.authorize(ConsoDroid.AccessAuthorizer.OPERATION_UNINSTALL_ANDROID_APPLICATIONS, "hu.hendricha.consodroid", socket);
+        }).should.not.throwError();
+      });
     });
 
-    it("should allow reading and writing to any folder if access control file has the right content", function() {
-      fs.readFileSync.returns(new Buffer("true"));
+    it("should throw on unknown operations",  function() {
       (function() {
-        authorizer.authorize(ConsoDroid.AccessAuthorizer.OPERATION_FILE_READ, "/some/other/path", socket);
-      }).should.not.throwError();
-
-      (function() {
-        authorizer.authorize(ConsoDroid.AccessAuthorizer.OPERATION_FILE_WRITE, "/some/other/path", socket);
-      }).should.not.throwError();
-
-      (function() {
-        authorizer.authorize(ConsoDroid.AccessAuthorizer.OPERATION_FILE_READ, "/the/public/path/some.file", socket);
-      }).should.not.throwError();
-
-      (function() {
-        authorizer.authorize(ConsoDroid.AccessAuthorizer.OPERATION_FILE_WRITE, "/the/public/path/some.file", socket);
-      }).should.not.throwError();
+        authorizer.authorize("Foobar operation", "Foobar object", socket);
+      }).should.throwError();
     });
 
     it("should be able to work with alternative socket type", function() {
