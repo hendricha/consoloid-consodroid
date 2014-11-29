@@ -4,7 +4,8 @@ server:
   logFormat: ~
 router:
   defaultTopics:
-    - console
+    - filelist
+    - consodroid
 log:
   minilog:
     filePath: '/data/data/hu.hendricha.consodroid/files/consodroid.log'
