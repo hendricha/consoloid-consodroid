@@ -2,3 +2,5 @@ include: consodroid.parameters
 consoDroid:
   apkInstaller:
     requestsFolder: "/data/data/hu.hendricha.consodroid/files/apkInstallRequests"
+  installedAndroidApplicationLister
+    listFile: "/data/data/hu.hendricha.consodroid/files/applicationList.json"
