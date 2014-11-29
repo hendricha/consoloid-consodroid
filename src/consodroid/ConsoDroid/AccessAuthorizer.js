@@ -13,7 +13,7 @@ defineClass('ConsoDroid.AccessAuthorizer', 'Consoloid.FileList.Server.MockAccess
         return;
       }
 
-      if ((operation == this.__self.OPERATION_READ) && this.__pathIsPublic(path)) {
+      if ((operation == this.__self.OPERATION_FILE_READ) && this.__pathIsPublic(path)) {
         return;
       }
 

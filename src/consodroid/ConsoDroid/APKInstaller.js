@@ -11,7 +11,7 @@ defineClass('ConsoDroid.APKInstaller', 'Consoloid.FileList.Server.AuthorizingSer
     install: function(res, apk)
     {
       this.res = res;
-      if (!this._authorize(this.authorizer.__self.OPERATION_READ, apk)) return;
+      if (!this._authorize(this.authorizer.__self.OPERATION_FILE_READ, apk)) return;
 
       if (!this.fsModule.existsSync(apk)) {
         this.sendError(this.res, "FILEEXISTS");

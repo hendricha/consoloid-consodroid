@@ -26,8 +26,8 @@ describeUnitTest('ConsoDroid.APKInstaller', function() {
     authorizer = {
       authorize: sinon.stub(),
       __self: {
-        OPERATION_READ: 0,
-        OPERATION_WRITE: 1
+        OPERATION_FILE_READ: 0,
+        OPERATION_FILE_WRITE: 1
       }
     }
     env.addServiceMock("file.access.authorizer", authorizer);
@@ -74,7 +74,7 @@ describeUnitTest('ConsoDroid.APKInstaller', function() {
       authorizer.authorize.throws();
       installer.install(res, "/the/path/of/some.apk");
 
-      authorizer.authorize.calledWith(Consoloid.FileList.Server.MockAccessAuthorizer.OPERATION_READ).should.be.ok;
+      authorizer.authorize.calledWith(Consoloid.FileList.Server.MockAccessAuthorizer.OPERATION_FILE_READ).should.be.ok;
       installer.sendError.calledWith(res).should.be.ok;
     });
   });
