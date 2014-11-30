@@ -11,7 +11,7 @@ defineClass('ConsoDroid.ApplicationList.DataSource', 'Consoloid.Ui.List.DataSour
     _setFilterValues: function(callback, filterValues)
     {
       if (!this.dataReady) {
-        this.get("installed_android_application_list").callAsync(
+        this.get("installed_android_application_lister").callAsync(
           "listApplications",
           [],
           {

@@ -48,7 +48,7 @@ describeUnitTest('ConsoDroid.ApplicationList.InstalledAndroidApplicationLister',
       fs.readFile.calledOnce.should.be.ok;
       fs.readFile.calledWith("/android/application/list").should.be.ok;
 
-      service.sendResult.calledWith(["hu.hendricha.consodroid", "hu.uniobuda.nik.bab03t", "com.dsemu.drastic"]).should.be.ok;
+      service.sendResult.calledWith(res, ["hu.hendricha.consodroid", "hu.uniobuda.nik.bab03t", "com.dsemu.drastic"]).should.be.ok;
 
       service.sendError.should.not.be.called;
     });

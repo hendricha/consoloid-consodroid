@@ -23,7 +23,7 @@ describeUnitTest('ConsoDroid.ApplicationList.DataSource', function() {
     applicationList = {
       callAsync: sinon.stub()
     };
-    env.addServiceMock("installed_android_application_list", applicationList);
+    env.addServiceMock("installed_android_application_lister", applicationList);
 
     dataSource = env.create(ConsoDroid.ApplicationList.DataSource, { });
 

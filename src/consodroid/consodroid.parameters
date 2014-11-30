@@ -1,5 +1,5 @@
 consoDroid:
   apkInstaller:
     requestsFolder: "/tmp"
-  installedAndroidApplicationLister
-    listFile: "./test/application_list.json"
+  installedAndroidApplicationLister:
+    listFile: "src/consodroid/ConsoDroid/ApplicationList/test/application_list.json"

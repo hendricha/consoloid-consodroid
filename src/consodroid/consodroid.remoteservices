@@ -5,8 +5,8 @@ definitions:
     remoting:
       defaults:
         responseMode: responsePassing
-  installed_android_application_list:
-    cls: ConsoDroid.ApplicationList.InstalledAndroidApplicationList
+  installed_android_application_lister:
+    cls: ConsoDroid.ApplicationList.InstalledAndroidApplicationLister
     shared: false
     remoting:
       defaults:
