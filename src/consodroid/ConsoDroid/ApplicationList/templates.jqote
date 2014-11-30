@@ -1,0 +1,5 @@
+<script id="ConsoDroid-ApplicationList-Item" type="text/x-jqote-template">
+<![CDATA[
+  <h3><%= this %></h3>
+]]>
+</script>

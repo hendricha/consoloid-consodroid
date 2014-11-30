@@ -29,3 +29,33 @@ definitions:
     options:
       expression: ["Install APK", "file <value>": "!target!", "Install", true]
       fileExtensions: ['apk']
+
+  android.application.list.sentence:
+    tags: [ "sentence" ]
+    cls: Consoloid.Interpreter.Sentence
+    options:
+      service: android.application.list.dialog
+      patterns:
+        - List installed Android applications
+  android.application.list.dialog:
+    cls: Consoloid.Ui.List.Dialog.Dialog
+    shared: false
+    options:
+      name: Android application list
+      list: '@android.application.list'
+
+  android.application.list:
+    cls: Consoloid.Ui.List.Widget
+    options:
+      dataSourceClass: ConsoDroid.ApplicationList.DataSource
+      dataSourceOptions: {}
+      factoryClass: Consoloid.Ui.List.Factory.Base
+      factoryOptions:
+        templateId: ConsoDroid-ApplicationList-Item
+      listViewClass: Consoloid.Ui.List.View.BoundaryShowing
+      listViewOptions:
+        radius: 2
+        numPerPage: 10
+        emptyMessage: "Could not list Android applications"
+      scrollbarClass: Consoloid.Ui.List.Scrollbar.Base
+      scrollbarOptions: {}
