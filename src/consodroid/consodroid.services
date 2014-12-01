@@ -60,3 +60,29 @@ definitions:
         emptyMessage: "Could not list Android applications"
       scrollbarClass: Consoloid.Ui.List.Scrollbar.Base
       scrollbarOptions: {}
+
+  uninstall.package.sentence:
+    tags: [ "sentence" ]
+    cls: Consoloid.Interpreter.Sentence
+    options:
+      service: uninstall.package.dialog
+      patterns:
+        - Uninstall
+        - Uninstall package
+        - Uninstall Android package
+        - Uninstall <package>
+        - Uninstall package <package>
+        - Uninstall Android package <package>
+      arguments:
+        package:
+          type: ConsoDroid.Context.AndroidApplication
+          pattern: application <value>
+          required: true
+  uninstall.package.dialog:
+    cls: ConsoDroid.UninstallAndroidPackageDialog
+    shared: false
+    options:
+      states:
+        'active': 'Consoloid-FileList-Dialog-DialogActive'
+        'error': 'Consoloid-FileList-Dialog-DialogError'
+        success: 'ConsoDroid-UninstallAndroidPackageDialog'

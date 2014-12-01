@@ -1,8 +1,15 @@
-
 <script id="ConsoDroid-InstallAPKDialog" type="text/x-jqote-template">
 <![CDATA[
   <div class="success info">
     <%= __("Please check your mobile device, to continue installation.") %>
+  </div>
+]]>
+</script>
+
+<script id="ConsoDroid-UninstallAndroidPackageDialog" type="text/x-jqote-template">
+<![CDATA[
+  <div class="success info">
+    <%= __("Please check your mobile device, to continue uninstalling.") %>
   </div>
 ]]>
 </script>
