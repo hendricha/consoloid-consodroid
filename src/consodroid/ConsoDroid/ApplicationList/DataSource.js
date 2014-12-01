@@ -40,7 +40,7 @@ defineClass('ConsoDroid.ApplicationList.DataSource', 'Consoloid.Ui.List.DataSour
       context = this.container.get('context');
       this.data.forEach(function(item) {
         context.add(this.create('ConsoDroid.Context.AndroidApplication', {
-          name: item,
+          name: item.label,
           container: this.container
         }));
       }.bind(this));
@@ -60,7 +60,7 @@ defineClass('ConsoDroid.ApplicationList.DataSource', 'Consoloid.Ui.List.DataSour
     {
       this.filteredDataIndexes
         .sort(function(a, b) {
-          return this.data[a] < this.data[b] ? -1 : +1;
+          return this.data[a].label < this.data[b].label ? -1 : +1;
         }.bind(this));
     },
   }

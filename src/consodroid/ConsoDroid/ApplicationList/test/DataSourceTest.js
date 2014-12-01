@@ -11,6 +11,7 @@ describeUnitTest('ConsoDroid.ApplicationList.DataSource', function() {
   var
   dataSource,
   applicationList,
+  applications,
   callback,
   context;
 
@@ -27,6 +28,14 @@ describeUnitTest('ConsoDroid.ApplicationList.DataSource', function() {
 
     dataSource = env.create(ConsoDroid.ApplicationList.DataSource, { });
 
+    applications = [{
+      label: "ConsoDroid",
+      name: "hu.hendricha.consodroid"
+    }, {
+      label: "unpackman",
+      name: "hu.uniobuda.nik.bab03t"
+    }];
+
     callback = sinon.stub();
   });
 
@@ -39,9 +48,14 @@ describeUnitTest('ConsoDroid.ApplicationList.DataSource', function() {
       applicationList.callAsync.calledOnce.should.be.ok;
       applicationList.callAsync.calledWith('listApplications', []);
 
-      applicationList.callAsync.args[0][2].success(["hu.hendricha.consodroid", "hu.uniobuda.nik.bab03t"]);
+      applicationList.callAsync.args[0][2].success(applications);
 
-      callback.calledWith(undefined, { data: ["hu.hendricha.consodroid", "hu.uniobuda.nik.bab03t"], count: 2 }).should.be.ok;
+      callback.args[0][1].count.should.equal(2);
+
+      callback.args[0][1].data[0].label.should.equal("ConsoDroid");
+      callback.args[0][1].data[0].name.should.equal("hu.hendricha.consodroid");
+      callback.args[0][1].data[1].label.should.equal("unpackman");
+      callback.args[0][1].data[1].name.should.equal("hu.uniobuda.nik.bab03t");
 
       dataSource.setFilterValues(callback, {}, 0, 1);
 
@@ -50,12 +64,12 @@ describeUnitTest('ConsoDroid.ApplicationList.DataSource', function() {
     });
 
     it("should add all apps to the context", function() {
-      applicationList.callAsync.args[0][2].success(["hu.hendricha.consodroid", "hu.uniobuda.nik.bab03t"]);
+      applicationList.callAsync.args[0][2].success(applications);
 
-      context.add.args[0][0].name.should.equal("hu.hendricha.consodroid");
+      context.add.args[0][0].name.should.equal("ConsoDroid");
       (context.add.args[0][0] instanceof(ConsoDroid.Context.AndroidApplication)).should.be.ok;
 
-      context.add.args[1][0].name.should.equal("hu.uniobuda.nik.bab03t");
+      context.add.args[1][0].name.should.equal("unpackman");
       (context.add.args[1][0] instanceof(ConsoDroid.Context.AndroidApplication)).should.be.ok;
     });
 
@@ -66,9 +80,18 @@ describeUnitTest('ConsoDroid.ApplicationList.DataSource', function() {
     });
 
     it("should sort data in case insensitive alphabetical order", function() {
-      applicationList.callAsync.args[0][2].success(["hu.hendricha.consodroid", "com.dsemu.drastic"]);
-
-      callback.calledWith(undefined, { data: ["com.dsemu.drastic", "hu.hendricha.consodroid"], count: 2 }).should.be.ok;
+      applicationList.callAsync.args[0][2].success([{
+        label: "unpackman",
+        name: "hu.uniobuda.nik.bab03t"
+      }, {
+        label: "ConsoDroid",
+        name: "hu.hendricha.consodroid"
+      }]);
+      
+      callback.args[0][1].data[0].label.should.equal("ConsoDroid");
+      callback.args[0][1].data[0].name.should.equal("hu.hendricha.consodroid");
+      callback.args[0][1].data[1].label.should.equal("unpackman");
+      callback.args[0][1].data[1].name.should.equal("hu.uniobuda.nik.bab03t");
     });
   });
 });
