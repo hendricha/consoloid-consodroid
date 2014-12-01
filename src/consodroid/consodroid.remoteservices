@@ -1,6 +1,6 @@
 definitions:
-  apk_installer:
-    cls: ConsoDroid.APKInstaller
+  apk_manager:
+    cls: ConsoDroid.APKManager
     shared: false
     remoting:
       defaults:

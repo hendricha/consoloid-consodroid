@@ -18,7 +18,7 @@ describeUnitTest('ConsoDroid.InstallAPKDialog', function() {
   var
   dialog,
   expr,
-  installer,
+  manager,
   remoteOperations;
 
   beforeEach(function() {
@@ -36,10 +36,10 @@ describeUnitTest('ConsoDroid.InstallAPKDialog', function() {
       getParameter: sinon.stub()
     });
 
-    installer = {
+    manager = {
       callAsync: sinon.stub()
     };
-    env.addServiceMock('apk_installer', installer);
+    env.addServiceMock('apk_manager', manager);
 
     remoteOperations = {
       callAsync: sinon.stub()
@@ -60,12 +60,12 @@ describeUnitTest('ConsoDroid.InstallAPKDialog', function() {
 
       remoteOperations.callAsync.args[0][2].success({ result: Consoloid.FileList.Server.BasicOperations.IS_FILE });
 
-      installer.callAsync.firstCall.calledWith('install', ['/something/somefile']).should.be.true;
+      manager.callAsync.firstCall.calledWith('install', ['/something/somefile']).should.be.true;
 
-      installer.callAsync.args[0][2].success({ result: true });
+      manager.callAsync.args[0][2].success({ result: true });
 
       remoteOperations.callAsync.calledOnce.should.be.true;
-      installer.callAsync.calledOnce.should.be.true;
+      manager.callAsync.calledOnce.should.be.true;
 
       dialog.activeState.should.equal("success");
     });
@@ -79,7 +79,7 @@ describeUnitTest('ConsoDroid.InstallAPKDialog', function() {
       remoteOperations.callAsync.args[0][2].success({ result: Consoloid.FileList.Server.BasicOperations.DOES_NOT_EXIST });
 
       remoteOperations.callAsync.calledOnce.should.be.true;
-      installer.callAsync.called.should.not.be.ok;
+      manager.callAsync.called.should.not.be.ok;
 
       dialog.activeState.should.equal("error");
     });
@@ -93,7 +93,7 @@ describeUnitTest('ConsoDroid.InstallAPKDialog', function() {
       remoteOperations.callAsync.args[0][2].success({ result: Consoloid.FileList.Server.BasicOperations.IS_FOLDER });
 
       remoteOperations.callAsync.calledOnce.should.be.true;
-      installer.callAsync.called.should.not.be.ok;
+      manager.callAsync.called.should.not.be.ok;
 
       dialog.activeState.should.equal("error");
     });

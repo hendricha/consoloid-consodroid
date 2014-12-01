@@ -1,12 +1,12 @@
 require('consoloid-server/Consoloid/Server/Service');
 require('consoloid-filelist/Consoloid/FileList/Server/AuthorizingService.js');
 require('consoloid-filelist/Consoloid/FileList/Server/MockAccessAuthorizer.js');
-require('../APKInstaller.js');
+require('../APKManager.js');
 require('consoloid-framework/Consoloid/Test/UnitTest');
 
-describeUnitTest('ConsoDroid.APKInstaller', function() {
+describeUnitTest('ConsoDroid.APKManager', function() {
   var
-    installer,
+    manager,
     resourceLoader,
     res = {},
     authorizer,
@@ -19,7 +19,7 @@ describeUnitTest('ConsoDroid.APKInstaller', function() {
     };
 
     resourceLoader = {
-      getParameter: sinon.stub().withArgs("consoDroid.apkInstaller.requestsFolder").returns("/apkInstallerRequests")
+      getParameter: sinon.stub().withArgs("consoDroid.apkManager.requestsFolder").returns("/apkManagerRequests")
     };
     env.addServiceMock("resource_loader", resourceLoader);
 
@@ -32,34 +32,35 @@ describeUnitTest('ConsoDroid.APKInstaller', function() {
     }
     env.addServiceMock("file.access.authorizer", authorizer);
 
-    installer = env.create(ConsoDroid.APKInstaller, { fsModule: fs });
+    manager = env.create(ConsoDroid.APKManager, { fsModule: fs });
 
-    installer.sendResult = sinon.stub();
-    installer.sendError = sinon.stub();
+    manager.sendResult = sinon.stub();
+    manager.sendError = sinon.stub();
   });
 
   describe("#install(res, apk)", function() {
     it("should put a new file to the folder containing the path", function() {
-      installer.install(res, "/the/path/of/some.apk");
+      manager.install(res, "/the/path/of/some.apk");
 
       fs.writeFileSync.calledOnce.should.be.ok;
       fs.writeFileSync.args[0][0].length.should.be.ok;
+
       fs.writeFileSync.args[0][1].should.equal("/the/path/of/some.apk\n");
 
-      installer.sendResult.calledWith(res, { result: true }).should.be.ok;
+      manager.sendResult.calledWith(res, { result: true }).should.be.ok;
     });
 
     it("should check if apk exists", function() {
       fs.existsSync.returns(false);
-      installer.install(res, "/the/path/of/some.apk");
+      manager.install(res, "/the/path/of/some.apk");
 
       fs.writeFileSync.called.should.not.be.ok;
-      installer.sendError.calledWith(res).should.be.ok;
+      manager.sendError.calledWith(res).should.be.ok;
     });
 
     it("should always create new files", function() {
-      installer.install(res, "/the/path/of/some.apk");
-      installer.install(res, "/the/path/of/some.apk");
+      manager.install(res, "/the/path/of/some.apk");
+      manager.install(res, "/the/path/of/some.apk");
 
       fs.writeFileSync.calledTwice.should.be.ok;
       fs.writeFileSync.args[0][0].length.should.be.ok;
@@ -72,10 +73,10 @@ describeUnitTest('ConsoDroid.APKInstaller', function() {
 
     it("should send error if reading from file isn't authorized", function() {
       authorizer.authorize.throws();
-      installer.install(res, "/the/path/of/some.apk");
+      manager.install(res, "/the/path/of/some.apk");
 
       authorizer.authorize.calledWith(Consoloid.FileList.Server.MockAccessAuthorizer.OPERATION_FILE_READ).should.be.ok;
-      installer.sendError.calledWith(res).should.be.ok;
+      manager.sendError.calledWith(res).should.be.ok;
     });
   });
 });

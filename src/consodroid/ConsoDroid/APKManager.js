@@ -1,4 +1,4 @@
-defineClass('ConsoDroid.APKInstaller', 'Consoloid.FileList.Server.AuthorizingService',
+defineClass('ConsoDroid.APKManager', 'Consoloid.FileList.Server.AuthorizingService',
   {
     __constructor: function(options)
     {
@@ -17,7 +17,7 @@ defineClass('ConsoDroid.APKInstaller', 'Consoloid.FileList.Server.AuthorizingSer
         this.sendError(this.res, "FILEEXISTS");
         return;
       }
-      var requestsFolderPath = this.get('resource_loader').getParameter('consoDroid.apkInstaller.requestsFolder');
+      var requestsFolderPath = this.get('resource_loader').getParameter('consoDroid.apkManager.requestsFolder');
       var current_date = (new Date()).valueOf().toString();
       var hash = this.cryptoModule.createHash('sha1').update(current_date + apk).digest('hex');
       this.fsModule.writeFileSync(requestsFolderPath + "/" + hash, apk + "\n");

@@ -7,7 +7,7 @@ defineClass('ConsoDroid.InstallAPKDialog', 'Consoloid.FileList.Dialog.FileOperat
     this.describe(this.arguments.apk.value, function() {
       this.showError(this.get("translator").trans("Path did not exist."));
     }.bind(this), function() {
-        this.get("apk_installer").callAsync("install", [ this.arguments.apk.value ], {
+        this.get("apk_manager").callAsync("install", [ this.arguments.apk.value ], {
         success: function(data) {
           this.showSuccess();
         }.bind(this),
