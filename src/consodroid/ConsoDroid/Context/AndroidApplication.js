@@ -6,6 +6,7 @@ defineClass('ConsoDroid.Context.AndroidApplication', 'Consoloid.Context.Object',
     {
       return new ConsoDroid.Context.AndroidApplication({
         name: str,
+        label: str,
         container: container
       });
     }
