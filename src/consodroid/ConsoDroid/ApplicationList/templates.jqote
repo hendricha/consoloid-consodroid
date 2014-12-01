@@ -1,5 +1,22 @@
 <script id="ConsoDroid-ApplicationList-Item" type="text/x-jqote-template">
 <![CDATA[
-  <h3><%= this %></h3>
+  <div class="item">
+    <div class="float right"><%= __s("Uninstall", { "application <value>": this.label }, null, true) %></div>
+    <img class="ui top aligned avatar image" src="<%= this.icon %>">
+    <div class="content">
+      <div class="header"><%= this.label %></div>
+      <%= this.name %>
+  </div>
+]]>
+</script>
+
+
+<script id="ConsoDroid-ApplicationList-Dialog" type="text/x-jqote-template">
+<![CDATA[
+  <div class="ui filelist raised segment">
+    <div class="ui list">
+      <%= this.create("Consoloid.Widget.JQoteTemplate", { id: 'Consoloid-Ui-List-Dialog', container: this.container }).get().jqote(this) %>
+    </div>
+  </div>
 ]]>
 </script>

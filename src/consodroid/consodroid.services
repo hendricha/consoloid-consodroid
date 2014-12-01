@@ -43,6 +43,7 @@ definitions:
     options:
       name: Android application list
       list: '@android.application.list'
+      responseTemplateId: ConsoDroid-ApplicationList-Dialog
 
   android.application.list:
     cls: Consoloid.Ui.List.Widget
