@@ -67,9 +67,11 @@ describeUnitTest('ConsoDroid.ApplicationList.DataSource', function() {
       applicationList.callAsync.args[0][2].success(applications);
 
       context.add.args[0][0].name.should.equal("ConsoDroid");
+      context.add.args[0][0].packageName.should.equal("hu.hendricha.consodroid");
       (context.add.args[0][0] instanceof(ConsoDroid.Context.AndroidApplication)).should.be.ok;
 
       context.add.args[1][0].name.should.equal("unpackman");
+      context.add.args[1][0].packageName.should.equal("hu.uniobuda.nik.bab03t");
       (context.add.args[1][0] instanceof(ConsoDroid.Context.AndroidApplication)).should.be.ok;
     });
 
@@ -87,7 +89,7 @@ describeUnitTest('ConsoDroid.ApplicationList.DataSource', function() {
         label: "ConsoDroid",
         name: "hu.hendricha.consodroid"
       }]);
-      
+
       callback.args[0][1].data[0].label.should.equal("ConsoDroid");
       callback.args[0][1].data[0].name.should.equal("hu.hendricha.consodroid");
       callback.args[0][1].data[1].label.should.equal("unpackman");

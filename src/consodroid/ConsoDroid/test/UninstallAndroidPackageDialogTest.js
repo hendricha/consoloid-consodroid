@@ -49,7 +49,7 @@ describeUnitTest('ConsoDroid.UninstallAndroidPackageDialog', function() {
 
   describe("#handleArguments(args, expression)", function() {
     it("should atempt to uninstall package", function() {
-      dialog.handleArguments({ package: { value: "some.package" } }, expr);
+      dialog.handleArguments({ package: { entity: { packageName: "some.package" } } }, expr);
 
       manager.callAsync.firstCall.calledWith('uninstall', ["some.package"]).should.be.true;
 

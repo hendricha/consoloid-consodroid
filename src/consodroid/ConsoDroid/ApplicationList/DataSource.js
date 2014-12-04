@@ -41,6 +41,7 @@ defineClass('ConsoDroid.ApplicationList.DataSource', 'Consoloid.Ui.List.DataSour
       this.data.forEach(function(item) {
         context.add(this.create('ConsoDroid.Context.AndroidApplication', {
           name: item.label,
+          packageName: item.name,
           container: this.container
         }));
       }.bind(this));

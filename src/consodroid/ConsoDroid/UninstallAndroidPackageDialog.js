@@ -3,8 +3,7 @@ defineClass('ConsoDroid.UninstallAndroidPackageDialog', 'Consoloid.FileList.Dial
   handleArguments: function(args, expression)
   {
     this.__base(args, expression);
-    console.log(this.arguments.package);
-    this.get("apk_manager").callAsync("uninstall", [ this.arguments.package.value ], {
+    this.get("apk_manager").callAsync("uninstall", [ this.arguments.package.entity.packageName ], {
       success: function(data) {
         this.showSuccess();
       }.bind(this),
