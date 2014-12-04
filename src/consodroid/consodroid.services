@@ -46,7 +46,7 @@ definitions:
       responseTemplateId: ConsoDroid-ApplicationList-Dialog
 
   android.application.list:
-    cls: Consoloid.Ui.List.Widget
+    cls: ConsoDroid.ApplicationList.ListWidget
     options:
       dataSourceClass: ConsoDroid.ApplicationList.DataSource
       dataSourceOptions: {}

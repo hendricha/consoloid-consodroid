@@ -64,5 +64,10 @@ defineClass('ConsoDroid.ApplicationList.DataSource', 'Consoloid.Ui.List.DataSour
           return this.data[a].label < this.data[b].label ? -1 : +1;
         }.bind(this));
     },
+
+    unreadyData: function()
+    {
+      this.dataReady = false;
+    }
   }
 );
