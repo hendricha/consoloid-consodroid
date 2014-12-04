@@ -10,7 +10,6 @@
 ]]>
 </script>
 
-
 <script id="ConsoDroid-ApplicationList-Dialog" type="text/x-jqote-template">
 <![CDATA[
   <div class="ui filelist raised segment">
