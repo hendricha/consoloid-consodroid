@@ -34,7 +34,8 @@ defineClass('ConsoDroid.AccessAuthorizer', 'Consoloid.FileList.Server.MockAccess
     __sessionIsAuthorized: function(socket)
     {
       var accessControlPath = this.get('resource_loader').getParameter('file.accessAuthorizer.accessControlFolder');
-      var address = socket.handshake ? socket.handshake.address.address : socket._peername.address;
+
+      var address = socket.handshake ? socket.handshake.address.address : (socket.remoteAddress || socket._peername.address);
 
       var accessControlFile = (accessControlPath + "/" + address)
       if (!this.fsModule.existsSync(accessControlFile)) {
