@@ -2,6 +2,9 @@ include: ../node_modules/consoloid-server/server.parameters
 server:
   cookie: sandbox
   logFormat: ~
+  ssl:
+    privateKey: ssl/server.key
+    certificate: ssl/server.crt
 router:
   defaultTopics:
     - filelist
