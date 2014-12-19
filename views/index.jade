@@ -26,7 +26,7 @@ html
             .loadTopics(['framework', 'console'])
             .get('console')
               .loadTopics('#{defaultTopics}'.split(','))
-              .startWithDialog('file.list.welcome.info');
+              .startWithDialog('welcome.info');
         }
 
         document.body.appendChild(scriptTag);

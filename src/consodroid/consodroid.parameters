@@ -3,3 +3,5 @@ consoDroid:
     requestsFolder: "/tmp"
   installedAndroidApplicationLister:
     listFile: "src/consodroid/ConsoDroid/ApplicationList/test/application_list.json"
+  deviceInfoProvider:
+    infoFile: "src/consodroid/ConsoDroid/test/device_info.json"

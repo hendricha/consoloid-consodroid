@@ -4,3 +4,5 @@ consoDroid:
     requestsFolder: "/data/data/hu.hendricha.consodroid/files/apkInstallRequests"
   installedAndroidApplicationLister:
     listFile: "/data/data/hu.hendricha.consodroid/files/applicationList.json"
+  deviceInfoProvider:
+    infoFile: "/data/data/hu.hendricha.consodroid/files/deviceInfo.json"

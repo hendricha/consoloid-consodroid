@@ -13,3 +13,42 @@
   </div>
 ]]>
 </script>
+
+<script id="ConsoDroid-Welcome" type="text/x-jqote-template">
+<![CDATA[
+  <div class="ui raised segment">
+    <h1 class="ui header">
+      <i class="mobile icon"></i>
+      <div class="content">
+        <span class="product"></span>
+        <div class="sub header"><span class="operator"></span></div>
+      </div>
+    </h1>
+
+    <table class="ui table">
+      <tr>
+        <td><%= __("Battery") %></td>
+        <td>
+            <div class="ui battery progress" data-percent="74" id="example1">
+              <div class="bar"></div>
+            </div>
+        </td>
+      </tr>
+
+      <tr>
+        <td><%= __("SD card") %></td>
+        <td>
+          <div class="ui disk progress" id="example1">
+            <div class="bar"></div>
+            <div class="label"></div>
+          </div>
+        </td>
+      </tr>
+
+      <tr>
+        <td><%= __("Installed applications") %></td>
+        <td><%= __s("List installed Android applications", null, null, true) %></td>
+      </tr>
+    </table>
+]]>
+</script>

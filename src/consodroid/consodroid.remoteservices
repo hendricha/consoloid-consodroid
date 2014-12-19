@@ -11,3 +11,9 @@ definitions:
     remoting:
       defaults:
         responseMode: responsePassing
+  device_info_provider:
+    cls: ConsoDroid.DeviceInfoProvider
+    shared: false
+    remoting:
+      defaults:
+        responseMode: responsePassing

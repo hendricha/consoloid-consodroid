@@ -86,3 +86,6 @@ definitions:
         'active': 'Consoloid-FileList-Dialog-DialogActive'
         'error': 'Consoloid-FileList-Dialog-DialogError'
         success: 'ConsoDroid-UninstallAndroidPackageDialog'
+
+  welcome.info:
+    cls: ConsoDroid.Welcome
