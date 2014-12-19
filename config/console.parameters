@@ -1,0 +1,3 @@
+include: ../node_modules/consoloid-console/console.parameters
+console:
+  welcomeMessage: ''
