@@ -39,7 +39,7 @@ defineClass('ConsoDroid.Welcome', 'Consoloid.Ui.Dialog',
               .width(diskPercenteage + "%")
               .text(Math.round(diskPercenteage) + "%");
 
-            this.node.find('.ui.disk.progress .label').text(__("%availableSpace%MB free out of %size%MB", {
+            this.node.find('.disk.info.label').text(__("%availableSpace%MB free out of %size%MB", {
               "%size%": info.diskInfo.size,
               "%availableSpace%": info.diskInfo.availableSpace,
             }));

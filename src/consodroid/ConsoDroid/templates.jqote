@@ -40,8 +40,8 @@
         <td>
           <div class="ui disk progress" id="example1">
             <div class="bar"></div>
-            <div class="label"></div>
           </div>
+          <div class="disk info label"></div>
         </td>
       </tr>
 
