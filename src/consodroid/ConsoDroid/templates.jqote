@@ -46,7 +46,7 @@
       </tr>
 
       <tr>
-        <td><%= __("Installed applications") %></td>
+        <td><%= __("Applications") %></td>
         <td><%= __s("List installed Android applications", null, null, true) %></td>
       </tr>
     </table>
