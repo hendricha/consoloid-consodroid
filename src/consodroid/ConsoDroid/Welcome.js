@@ -9,7 +9,7 @@ defineClass('ConsoDroid.Welcome', 'Consoloid.Ui.Dialog',
 
     setup: function()
     {
-      this.get("dialogLauncher").startFromText("Show file view");
+      this.get("dialogLauncher").startFromText(__("Show file view"));
       this.__base();
     },
 
