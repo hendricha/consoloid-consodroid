@@ -44,6 +44,15 @@ describeUnitTest('ConsoDroid.AccessAuthorizer', function() {
       fs.writeFileSync.calledWith("/accessControlPath/IP.ADD.RE.SS", "").should.be.ok;
     });
 
+    it("should remove ipv6 stuff from the access control file's name", function() {
+      socket.handshake.address.address = "::ffff:IP.ADD.RE.SS"
+      fs.existsSync.returns(false);
+      authorizer.authorize(ConsoDroid.AccessAuthorizer.OPERATION_FILE_READ, "/the/public/path/some.file", socket);
+
+      fs.existsSync.calledWith("/accessControlPath/IP.ADD.RE.SS").should.be.ok;
+      fs.writeFileSync.calledWith("/accessControlPath/IP.ADD.RE.SS", "").should.be.ok;
+    });
+
     describe("file access", function() {
       it("should allow only reading from the public folder when user is not authorized", function() {
         (function() {
@@ -121,7 +130,7 @@ describeUnitTest('ConsoDroid.AccessAuthorizer', function() {
       (function() {
         authorizer.authorize(ConsoDroid.AccessAuthorizer.OPERATION_FILE_READ, "/the/public/path/some.file", socket);
       }).should.not.throwError();
-      
+
       socket = {
         _peername: {
           address: "IP.ADD.RE.SS"
