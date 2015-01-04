@@ -8,3 +8,13 @@ To start this app manually run the following, after installing the required node
 ```
 node run.js
 ```
+
+Git pre-push hook
+=================
+
+The repo comes with a pre-push for git, that runs the unit tests automatically. To activate it, just run
+
+```
+ln -s .pre-push .git/hooks/pre-push
+chmod +x .git/hooks/pre-push
+```
