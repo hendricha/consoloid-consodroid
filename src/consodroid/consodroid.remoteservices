@@ -17,3 +17,8 @@ definitions:
     remoting:
       defaults:
         responseMode: responsePassing
+  consodrpod_i18n_messages:
+    cls: Consoloid.I18n.YamlMessagesDirectoryLoader
+    options:
+      directoryName: ConsoDroid/i18n
+    tags: [ "create-on-topic-load" ]

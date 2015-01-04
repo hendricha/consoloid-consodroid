@@ -1,0 +1,68 @@
+domain: ConsoDroid
+messages:
+  -
+    source: Install APK
+    target: Telepíts APK-t
+  -
+    source: Install Android package
+    target: Telepíts Android csomagot
+  -
+    source: Install APK <apk>
+    target: Telepítsd <apk> APK-t
+  -
+    source: Install Android package <apk>
+    target: Telepítsd <apk> Android csomagot
+  -
+    source: Install
+    target: Telepítsd
+  -
+    source: List installed Android applications
+    target: Listázd az Android alkalmazásokat
+  -
+    source: Android application list
+    target: Android alkalmazás lista
+  -
+    source: Could not list Android applications
+    target: Nem lehetett az Android alkalmazásokat listázni
+  -
+    source: Uninstall
+    target: Uninstaláld
+  -
+    source: Uninstall package
+    target: Uninstalálj csomagot
+  -
+    source: Uninstall Android package
+    target: Uninstalálj Android csomagot
+  -
+    source: Uninstall <package>
+    target: Uninstaláld <package>
+  -
+    source: Uninstall package <package>
+    target: Uninstaláld <package> csomagot
+  -
+    source: Uninstall Android package <package>
+    target: Uninstaláld <package> Android csomagot
+  -
+    source: Battery
+    target: Akkumulátor
+  -
+    source: SD card
+    target: SD kártya
+  -
+    source: Applications
+    target: Alkalmazások
+  -
+    source: "%availableSpace%MB free out of %size%MB"
+    target: "%availableSpace%MB szabad %size%MB-ból"
+  -
+    source: Listing and uninstalling Android applications is unauthorized
+    target: Android alkalmazások listázása és eltávolítása nem engedélyezett
+  -
+    source: application <value>
+    target: alkalmazás <value>
+  -
+    source: Please check your mobile device, to continue uninstalling.
+    target: Nézze meg a mobil eszközét, onnét folytathatja az alkalmazás eltávolítását.
+  -
+    source: Please check your mobile device, to continue installation.
+    target: Nézze meg a mobil eszközét, onnét folytathatja az alkalmazás telepítését.
